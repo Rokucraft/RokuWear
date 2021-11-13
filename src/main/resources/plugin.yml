@@ -1,0 +1,6 @@
+name: RokuWear
+version: '${version}'
+main: com.rokucraft.rokuwear.RokuWear
+api-version: 1.17
+authors: [ Aikovdp ]
+website: https://www.rokucraft.com
