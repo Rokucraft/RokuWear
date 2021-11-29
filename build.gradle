@@ -1,3 +1,5 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+
 plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '7.1.0'
@@ -41,6 +43,13 @@ tasks.withType(JavaCompile).configureEach {
         options.release = targetJavaVersion
     }
 }
+
+task relocateShadowJar(type: ConfigureShadowRelocation) {
+    target = tasks.shadowJar
+    prefix = "${rootProject.group}.${rootProject.name}.libs"
+}
+
+tasks.shadowJar.dependsOn tasks.relocateShadowJar
 
 processResources {
     def props = [version: version]
