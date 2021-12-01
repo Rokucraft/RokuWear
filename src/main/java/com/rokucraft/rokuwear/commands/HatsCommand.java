@@ -34,7 +34,7 @@ public class HatsCommand {
                                     final Player player = (Player) context.getSender();
                                     List<GuiItem> guiItemList = new ArrayList<>();
                                     for (Hat hat : plugin.config().hats())
-                                        if (player.hasPermission(hat.permission()))
+                                        if (hat.permission() == null || player.hasPermission(hat.permission()))
                                             guiItemList.add(guiItem(hat));
 
                                     if (guiItemList.isEmpty())

@@ -37,7 +37,7 @@ public class ArmorCommand {
                             final Player player = (Player) context.getSender();
                             List<ArmorSet> unlockedArmorSets = new ArrayList<>();
                             for (ArmorSet set : plugin.config().armorSets()) {
-                                if (player.hasPermission(set.permission())) {
+                                if (set.permission() == null || player.hasPermission(set.permission())) {
                                     unlockedArmorSets.add(set);
                                 }
                             }
