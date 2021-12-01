@@ -14,7 +14,9 @@ public class ComponentSerializer implements TypeSerializer<Component> {
 
     @Override
     public Component deserialize(Type type, ConfigurationNode node) {
-        return MiniMessage.get().deserializeOrNull(node.getString());
+        // Replace this when 1.16 compatibility is dropped:
+        // return MiniMessage.get().deserializeOrNull(node.getString());
+        return MiniMessage.get().deserializeOr(node.getString(), null);
     }
 
     @Override

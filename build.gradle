@@ -22,7 +22,9 @@ repositories {
 
 dependencies {
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
-    implementation "net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT"
+    implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT") {
+        exclude(module: 'adventure-api')
+    }
     implementation 'org.spongepowered:configurate-yaml:4.1.2'
     implementation "cloud.commandframework:cloud-paper:1.5.0"
     implementation 'com.github.stefvanschie.inventoryframework:IF:0.10.3'
@@ -46,7 +48,7 @@ tasks.withType(JavaCompile).configureEach {
 
 task relocateShadowJar(type: ConfigureShadowRelocation) {
     target = tasks.shadowJar
-    prefix = "${rootProject.group}.${rootProject.name}.libs"
+    prefix = "${rootProject.group}.${rootProject.name.toLowerCase()}.libs"
 }
 
 tasks.shadowJar.dependsOn tasks.relocateShadowJar
