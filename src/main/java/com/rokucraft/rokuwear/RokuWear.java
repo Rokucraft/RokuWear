@@ -9,11 +9,13 @@ import com.rokucraft.rokuwear.config.Config;
 import com.rokucraft.rokuwear.listeners.InventoryClickListener;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public final class RokuWear extends JavaPlugin {
+    public static final Material HAT_MATERIAL = Material.SCUTE;
     private Config config = new Config(this);
     private PaperCommandManager<CommandSender> manager;
     public static final Component PREFIX = Component.text("[", NamedTextColor.DARK_GRAY)
