@@ -1,6 +1,7 @@
 package com.rokucraft.rokuwear.listeners;
 
 import com.rokucraft.rokuwear.RokuWear;
+import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -12,12 +13,17 @@ public class InventoryClickListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
-        if (e.getSlotType() == SlotType.ARMOR && !e.getWhoClicked().hasPermission("rokuwear.bypass.armorlock")) {
-            ItemStack item = e.getCurrentItem();
-            // Allow people to manually remove items like player heads from their hat slot
-            if (e.getSlot() == HAT_SLOT && (item == null || item.getType() != RokuWear.HAT_MATERIAL))
-                return;
-            e.setCancelled(true);
+        if (
+                e.getWhoClicked().getGameMode() == GameMode.CREATIVE
+                || e.getSlotType() != SlotType.ARMOR
+                || e.getWhoClicked().hasPermission("rokuwear.bypass.armorlock")
+        ) {
+            return;
         }
+        ItemStack item = e.getCurrentItem();
+        // Allow people to manually remove items like player heads from their hat slot
+        if (e.getSlot() == HAT_SLOT && (item == null || item.getType() != RokuWear.HAT_MATERIAL))
+            return;
+        e.setCancelled(true);
     }
 }
