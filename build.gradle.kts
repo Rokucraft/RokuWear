@@ -1,5 +1,5 @@
 plugins {
-    java
+    `java-library`
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
@@ -23,10 +23,13 @@ dependencies {
 }
 
 tasks {
+    assemble {
+        dependsOn(shadowJar)
+    }
     shadowJar {
         archiveClassifier.set("")
         isEnableRelocation = true
-        relocationPrefix = "$group.$name.libs"
+        relocationPrefix = "${project.group}.${project.name}.libs"
     }
     processResources {
         val props = "version" to version
