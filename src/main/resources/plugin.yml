@@ -1,6 +1,6 @@
 name: RokuWear
 version: '${version}'
 main: com.rokucraft.rokuwear.RokuWear
-api-version: 1.16
+api-version: 1.19
 authors: [ Aikovdp ]
 website: https://www.rokucraft.com
