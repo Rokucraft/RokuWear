@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.rokucraft"
-version = "1.0.2"
+version = "1.0.3-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -13,10 +13,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
-    implementation("net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT") {
-        exclude(module = "adventure-api")
-    }
+    compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
     implementation("org.spongepowered:configurate-yaml:4.1.2")
     implementation("cloud.commandframework:cloud-paper:1.8.3")
     implementation("com.github.stefvanschie.inventoryframework:IF:0.10.9")

@@ -14,13 +14,11 @@ public class ComponentSerializer implements TypeSerializer<Component> {
 
     @Override
     public Component deserialize(Type type, ConfigurationNode node) {
-        // Replace this when 1.16 compatibility is dropped:
-        // return MiniMessage.get().deserializeOrNull(node.getString());
-        return MiniMessage.get().deserializeOr(node.getString(), null);
+        return MiniMessage.miniMessage().deserializeOrNull(node.getString());
     }
 
     @Override
     public void serialize(Type type, @Nullable Component obj, ConfigurationNode node) throws SerializationException {
-        node.set(MiniMessage.get().serializeOrNull(obj));
+        node.set(MiniMessage.miniMessage().serializeOrNull(obj));
     }
 }
