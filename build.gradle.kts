@@ -1,6 +1,7 @@
 plugins {
     `java-library`
     id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("xyz.jpenilla.run-paper") version "2.1.0"
 }
 
 group = "com.rokucraft"
@@ -35,6 +36,9 @@ tasks {
         filesMatching("plugin.yml") {
             expand(props)
         }
+    }
+    runServer {
+        minecraftVersion("1.19.4")
     }
 }
 
