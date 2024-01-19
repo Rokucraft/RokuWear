@@ -25,7 +25,7 @@ tasks {
         dependsOn(shadowJar)
     }
     shadowJar {
-        archiveClassifier.set("")
+        archiveClassifier = ""
         isEnableRelocation = true
         relocationPrefix = "${project.group}.${project.name}.libs"
     }
@@ -44,7 +44,6 @@ tasks {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
-
