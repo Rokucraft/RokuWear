@@ -1,7 +1,5 @@
 package com.rokucraft.rokuwear.commands;
 
-import cloud.commandframework.ArgumentDescription;
-import cloud.commandframework.paper.PaperCommandManager;
 import com.github.stefvanschie.inventoryframework.adventuresupport.ComponentHolder;
 import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
@@ -14,10 +12,13 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.incendo.cloud.CommandManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.incendo.cloud.description.Description.description;
 
 public class HatsCommand {
     private final RokuWear plugin;
@@ -26,12 +27,12 @@ public class HatsCommand {
         this.plugin = plugin;
     }
 
-    public void register(PaperCommandManager<CommandSender> manager) {
+    public void register(CommandManager<CommandSender> manager) {
         manager.command(
-                manager.commandBuilder("hats", ArgumentDescription.of("Shows your available hats"))
+                manager.commandBuilder("hats", description("Shows your available hats"))
                         .senderType(Player.class)
                         .handler(context -> {
-                                    final Player player = (Player) context.getSender();
+                                    final Player player = context.sender();
                                     List<GuiItem> guiItemList = new ArrayList<>();
                                     for (Hat hat : plugin.config().hats())
                                         if (hat.permission() == null || player.hasPermission(hat.permission()))

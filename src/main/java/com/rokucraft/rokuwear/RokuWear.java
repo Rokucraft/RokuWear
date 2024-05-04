@@ -1,7 +1,5 @@
 package com.rokucraft.rokuwear;
 
-import cloud.commandframework.execution.CommandExecutionCoordinator;
-import cloud.commandframework.paper.PaperCommandManager;
 import com.rokucraft.rokuwear.commands.ArmorCommand;
 import com.rokucraft.rokuwear.commands.HatsCommand;
 import com.rokucraft.rokuwear.commands.ReloadCommand;
@@ -13,6 +11,8 @@ import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.incendo.cloud.execution.ExecutionCoordinator;
+import org.incendo.cloud.paper.PaperCommandManager;
 
 public final class RokuWear extends JavaPlugin {
     public static final Material HAT_MATERIAL = Material.SCUTE;
@@ -25,7 +25,7 @@ public final class RokuWear extends JavaPlugin {
     @Override
     public void onEnable() {
         try {
-            this.manager = PaperCommandManager.createNative(this, CommandExecutionCoordinator.simpleCoordinator());
+            this.manager = PaperCommandManager.createNative(this, ExecutionCoordinator.simpleCoordinator());
         } catch (final Exception e) {
             this.getLogger().severe("Failed to initialize the command manager");
             this.getServer().getPluginManager().disablePlugin(this);

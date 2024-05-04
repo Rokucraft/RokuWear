@@ -1,7 +1,5 @@
 package com.rokucraft.rokuwear.commands;
 
-import cloud.commandframework.ArgumentDescription;
-import cloud.commandframework.paper.PaperCommandManager;
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent.SlotType;
 import com.github.stefvanschie.inventoryframework.adventuresupport.ComponentHolder;
 import com.github.stefvanschie.inventoryframework.gui.GuiItem;
@@ -18,9 +16,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.incendo.cloud.CommandManager;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.incendo.cloud.description.Description.description;
 
 public class ArmorCommand {
     private final RokuWear plugin;
@@ -29,12 +30,12 @@ public class ArmorCommand {
         this.plugin = plugin;
     }
 
-    public void register(PaperCommandManager<CommandSender> manager) {
+    public void register(CommandManager<CommandSender> manager) {
         manager.command(
-                manager.commandBuilder("armor", ArgumentDescription.of("Shows your available armors"))
+                manager.commandBuilder("armor", description("Shows your available armors"))
                         .senderType(Player.class)
                         .handler(context -> {
-                            final Player player = (Player) context.getSender();
+                            final Player player = context.sender();
                             List<ArmorSet> unlockedArmorSets = new ArrayList<>();
                             for (ArmorSet set : plugin.config().armorSets()) {
                                 if (set.permission() == null || player.hasPermission(set.permission())) {
