@@ -1,7 +1,7 @@
 plugins {
     `java-library`
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("xyz.jpenilla.run-paper") version "2.1.0"
+    id("xyz.jpenilla.run-paper") version "2.3.0"
 }
 
 group = "com.rokucraft"
@@ -38,12 +38,13 @@ tasks {
         }
     }
     runServer {
-        minecraftVersion("1.19.4")
+        minecraftVersion("1.20.6")
     }
 }
 
 java {
+    sourceCompatibility = JavaVersion.VERSION_17
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
