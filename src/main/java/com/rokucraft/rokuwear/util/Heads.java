@@ -15,13 +15,13 @@ import java.util.UUID;
 public class Heads {
     public static final ItemStack NEXT_ARROW_HEAD = getHead(
             Component.text("Next", NamedTextColor.YELLOW),
-            "Oak Wood Arrow Right",
+            "Arrow Right",
             "d513d666-0992-42c7-9aa6-e518a83e0b38",
             "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTliZjMyOTJlMTI2YTEwNWI1NGViYTcxM2FhMWIxNTJkNTQxYTFkODkzODgyOWM1NjM2NGQxNzhlZDIyYmYifX19");
 
     public static final ItemStack PREVIOUS_ARROW_HEAD = getHead(
             Component.text("Previous", NamedTextColor.YELLOW),
-            "Oak Wood Arrow Left",
+            "Arrow Left",
             "2391d533-ab09-434d-9980-adafde4057a3",
             "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmQ2OWUwNmU1ZGFkZmQ4NGU1ZjNkMWMyMTA2M2YyNTUzYjJmYTk0NWVlMWQ0ZDcxNTJmZGM1NDI1YmMxMmE5In19fQ==");
 
