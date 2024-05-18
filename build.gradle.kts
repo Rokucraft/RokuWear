@@ -40,6 +40,11 @@ tasks {
     runServer {
         minecraftVersion("1.20.6")
     }
+    jar {
+        manifest {
+            attributes("paperweight-mappings-namespace" to "mojang")
+        }
+    }
 }
 
 java {
