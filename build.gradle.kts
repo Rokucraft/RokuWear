@@ -17,7 +17,7 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
     compileOnly("org.spongepowered:configurate-yaml:4.1.2")
     implementation("org.incendo:cloud-paper:2.0.0-beta.7")
-    implementation("com.github.stefvanschie.inventoryframework:IF:0.10.14")
+    implementation("com.github.stefvanschie.inventoryframework:IF:0.10.19")
 }
 
 tasks {
