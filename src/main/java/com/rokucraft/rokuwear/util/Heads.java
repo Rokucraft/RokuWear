@@ -15,18 +15,18 @@ import java.util.UUID;
 public class Heads {
     public static final ItemStack NEXT_ARROW_HEAD = getHead(
             Component.text("Next", NamedTextColor.YELLOW),
-            "Arrow Right",
+            "Arrow_Right",
             "d513d666-0992-42c7-9aa6-e518a83e0b38",
             "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTliZjMyOTJlMTI2YTEwNWI1NGViYTcxM2FhMWIxNTJkNTQxYTFkODkzODgyOWM1NjM2NGQxNzhlZDIyYmYifX19");
 
     public static final ItemStack PREVIOUS_ARROW_HEAD = getHead(
             Component.text("Previous", NamedTextColor.YELLOW),
-            "Arrow Left",
+            "Arrow_Left",
             "2391d533-ab09-434d-9980-adafde4057a3",
             "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmQ2OWUwNmU1ZGFkZmQ4NGU1ZjNkMWMyMTA2M2YyNTUzYjJmYTk0NWVlMWQ0ZDcxNTJmZGM1NDI1YmMxMmE5In19fQ==");
 
     public static final ItemStack X_HEAD = getHead(
-            "Oak Wood X",
+            "Oak_Wood_X",
             "33b5946c-20d1-466f-8dd5-11a0fdcd7105",
             "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWE2Nzg3YmEzMjU2NGU3YzJmM2EwY2U2NDQ5OGVjYmIyM2I4OTg0NWU1YTY2YjVjZWM3NzM2ZjcyOWVkMzcifX19");
 
