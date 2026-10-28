@@ -7,6 +7,7 @@ import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.Orientable;
 import com.github.stefvanschie.inventoryframework.pane.OutlinePane;
 import com.github.stefvanschie.inventoryframework.pane.PaginatedPane;
+import com.github.stefvanschie.inventoryframework.pane.util.Slot;
 import com.rokucraft.rokuwear.RokuWear;
 import com.rokucraft.rokuwear.util.GuiUtil;
 import com.rokucraft.rokuwear.wearables.ArmorSet;
@@ -56,10 +57,10 @@ public class ArmorCommand {
         gui.setOnGlobalClick(event -> event.setCancelled(true));
 
         PaginatedPane pages = toPages(armorSets);
-        gui.addPane(pages);
-        gui.addPane(GuiUtil.getHeader(player));
-        gui.addPane(GuiUtil.getRemoveButton(
-                "Remove Armor", 4, gui.getRows() - 1,
+        gui.addPane(Slot.fromXY(1, 1), pages);
+        GuiUtil.addHeader(gui, player);
+        GuiUtil.addRemoveButton(
+                gui, "Remove Armor", 4, gui.getRows() - 1,
                 event -> {
                     PlayerInventory inventory = event.getWhoClicked().getInventory();
                     inventory.setChestplate(null);
@@ -67,9 +68,9 @@ public class ArmorCommand {
                     inventory.setBoots(null);
                     event.getWhoClicked().sendMessage(Component.text("Your armor was removed", NamedTextColor.GREEN));
                 }
-        ));
+        );
         if (pages.getPages() > 1)
-            gui.addPane(GuiUtil.getNavigation(gui, pages));
+            GuiUtil.addNavigation(gui, pages);
 
         return gui;
     }
@@ -105,7 +106,7 @@ public class ArmorCommand {
             pieces.addAll(armorSet.pieces());
 
 
-        PaginatedPane pages = new PaginatedPane(1, 1, width, height);
+        PaginatedPane pages = new PaginatedPane(width, height);
         int pagesNeeded = (pieces.size() + itemsPerPage - 1) / itemsPerPage;
 
         int index = 0;
@@ -116,7 +117,7 @@ public class ArmorCommand {
                 if (index >= pieces.size()) break;
                 outlinePane.addItem(guiItem(pieces.get(index++)));
             }
-            pages.addPane(i, outlinePane);
+            pages.addPage(Slot.fromXY(0, 0), outlinePane);
         }
         return pages;
     }
