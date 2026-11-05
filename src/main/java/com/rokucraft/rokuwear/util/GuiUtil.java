@@ -4,6 +4,7 @@ import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.PaginatedPane;
 import com.github.stefvanschie.inventoryframework.pane.StaticPane;
+import com.github.stefvanschie.inventoryframework.pane.component.PagingButtons;
 import com.github.stefvanschie.inventoryframework.pane.util.Slot;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -18,21 +19,9 @@ import java.util.function.Consumer;
 
 public class GuiUtil {
     public static void addNavigation(ChestGui gui, PaginatedPane pages) {
-        StaticPane navigation = new StaticPane(9, 1);
-
-        navigation.addItem(new GuiItem(Heads.PREVIOUS_ARROW_HEAD, event -> {
-            if (pages.getPage() > 0) {
-                pages.setPage(pages.getPage() - 1);
-                gui.update();
-            }
-        }), 0, 0);
-
-        navigation.addItem(new GuiItem(Heads.NEXT_ARROW_HEAD, event -> {
-            if (pages.getPage() < pages.getPages() - 1) {
-                pages.setPage(pages.getPage() + 1);
-                gui.update();
-            }
-        }), 8, 0);
+        PagingButtons navigation = new PagingButtons(9, pages);
+        navigation.setBackwardButton(new GuiItem(Heads.PREVIOUS_ARROW_HEAD));
+        navigation.setForwardButton(new GuiItem(Heads.NEXT_ARROW_HEAD));
         gui.addPane(Slot.fromXY(0, gui.getRows() - 1), navigation);
     }
 
