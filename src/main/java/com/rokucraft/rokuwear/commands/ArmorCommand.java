@@ -55,6 +55,7 @@ public class ArmorCommand {
     private ChestGui buildGui(List<ArmorSet> armorSets, Player player) {
         ChestGui gui = new ChestGui(5, ComponentHolder.of(Component.text("Armor")));
         gui.setOnGlobalClick(event -> event.setCancelled(true));
+        gui.setOnGlobalDrag(event -> event.setCancelled(true));
 
         PaginatedPane pages = toPages(armorSets);
         gui.addPane(Slot.fromXY(1, 1), pages);
@@ -69,8 +70,7 @@ public class ArmorCommand {
                     event.getWhoClicked().sendMessage(Component.text("Your armor was removed", NamedTextColor.GREEN));
                 }
         );
-        if (pages.getPages() > 1)
-            GuiUtil.addNavigation(gui, pages);
+        GuiUtil.addNavigation(gui, pages);
 
         return gui;
     }

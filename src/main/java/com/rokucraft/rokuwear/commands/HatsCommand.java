@@ -52,6 +52,7 @@ public class HatsCommand {
     private ChestGui buildGui(List<GuiItem> guiItemList, Player player) {
         ChestGui gui = new ChestGui(5, ComponentHolder.of(Component.text("Hats")));
         gui.setOnGlobalClick(event -> event.setCancelled(true));
+        gui.setOnGlobalDrag(event -> event.setCancelled(true));
 
         PaginatedPane pages = new PaginatedPane(7, gui.getRows() - 2);
         pages.populateWithGuiItems(guiItemList);
@@ -64,8 +65,7 @@ public class HatsCommand {
                     event.getWhoClicked().sendMessage(Component.text("Your hat was removed", NamedTextColor.GREEN));
                 }
         );
-        if (pages.getPages() > 1)
-            GuiUtil.addNavigation(gui, pages);
+        GuiUtil.addNavigation(gui, pages);
 
         return gui;
     }
