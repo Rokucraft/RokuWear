@@ -59,9 +59,9 @@ public class ArmorCommand {
 
         PaginatedPane pages = toPages(armorSets);
         gui.addPane(Slot.fromXY(1, 1), pages);
-        GuiUtil.addHeader(gui, player);
-        GuiUtil.addRemoveButton(
-                gui, "Remove Armor", 4, gui.getRows() - 1,
+        gui.addPane(Slot.fromXY(0, 0), GuiUtil.getHeader(player));
+        gui.addPane(Slot.fromXY(4, gui.getRows() - 1), GuiUtil.getRemoveButton(
+                "Remove Armor",
                 event -> {
                     PlayerInventory inventory = event.getWhoClicked().getInventory();
                     inventory.setChestplate(null);
@@ -69,8 +69,8 @@ public class ArmorCommand {
                     inventory.setBoots(null);
                     event.getWhoClicked().sendMessage(Component.text("Your armor was removed", NamedTextColor.GREEN));
                 }
-        );
-        GuiUtil.addNavigation(gui, pages);
+        ));
+        gui.addPane(Slot.fromXY(0, gui.getRows() - 1), GuiUtil.getNavigation(pages));
 
         return gui;
     }
