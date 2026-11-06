@@ -4,6 +4,7 @@ import com.github.stefvanschie.inventoryframework.adventuresupport.ComponentHold
 import com.github.stefvanschie.inventoryframework.gui.GuiItem;
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui;
 import com.github.stefvanschie.inventoryframework.pane.PaginatedPane;
+import com.github.stefvanschie.inventoryframework.pane.util.Slot;
 import com.rokucraft.rokuwear.RokuWear;
 import com.rokucraft.rokuwear.util.GuiUtil;
 import com.rokucraft.rokuwear.wearables.Hat;
@@ -51,20 +52,20 @@ public class HatsCommand {
     private ChestGui buildGui(List<GuiItem> guiItemList, Player player) {
         ChestGui gui = new ChestGui(5, ComponentHolder.of(Component.text("Hats")));
         gui.setOnGlobalClick(event -> event.setCancelled(true));
+        gui.setOnGlobalDrag(event -> event.setCancelled(true));
 
-        PaginatedPane pages = new PaginatedPane(1, 1, 7, gui.getRows() - 2);
+        PaginatedPane pages = new PaginatedPane(7, gui.getRows() - 2);
         pages.populateWithGuiItems(guiItemList);
-        gui.addPane(pages);
-        gui.addPane(GuiUtil.getHeader(player));
-        gui.addPane(GuiUtil.getRemoveButton(
-                "Remove Hat", 4, gui.getRows() - 1,
+        gui.addPane(Slot.fromXY(1, 1), pages);
+        gui.addPane(Slot.fromXY(0, 0), GuiUtil.getHeader(player));
+        gui.addPane(Slot.fromXY(4, gui.getRows() - 1), GuiUtil.getRemoveButton(
+                "Remove Hat",
                 event -> {
                     event.getWhoClicked().getInventory().setHelmet(null);
                     event.getWhoClicked().sendMessage(Component.text("Your hat was removed", NamedTextColor.GREEN));
                 }
         ));
-        if (pages.getPages() > 1)
-            gui.addPane(GuiUtil.getNavigation(gui, pages));
+        gui.addPane(Slot.fromXY(0, gui.getRows() - 1), GuiUtil.getNavigation(pages));
 
         return gui;
     }
